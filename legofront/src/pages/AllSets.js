@@ -1,5 +1,11 @@
-const AllSets = (props) => {
-  return <h1>All Sets</h1>;
-};
+import LegoSet from "../components/LegoSet";
+
+const AllSets = (props) => (
+  <>
+    {props.posts.map((post) => (
+      <LegoSet post={post} key={post.id} />
+    ))}
+  </>
+);
 
 export default AllSets;
