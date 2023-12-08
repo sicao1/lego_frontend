@@ -26,6 +26,37 @@ function App() {
     setPosts(data);
   };
 
+  const handleFormSubmission = async (data, type) => {
+    if (type === "new") {
+      //if new create a resource
+      const response = await fetch(`${apiURL}`, {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      getSets();
+    } else {
+      // this will be where our edit fetch goes
+      const response = await fetch(`${apiURL}${data.id}/`, {
+        method: "put",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      getSets();
+    }
+  };
+
+  const deleteSet = async (id) => {
+    const response = await fetch(`${apiURL}${id}/`, {
+      method: "delete",
+    });
+    getSets();
+  };
+
   useEffect(() => {
     getSets();
   }, []);
@@ -35,10 +66,36 @@ function App() {
       <h1>The Lego Terrarium</h1>
 
       <Routes>
-        <Route exact path="/" element={<AllSets posts={posts} />} />
-        <Route exact path="/post/:id" element={<SingleSet posts={posts} />} />
-        <Route exact path="/new" element={<Form />} />
-        <Route exact path="/edit/:id" element={<Form />} />
+        <Route
+          exact
+          path="/"
+          element={<AllSets posts={posts} deleteSet={deleteSet} />}
+        />
+        <Route exact path="/set/:id" element={<SingleSet posts={posts} />} />
+        <Route
+          exact
+          path="/new"
+          element={
+            <Form
+              posts={posts}
+              handleSubmit={handleFormSubmission}
+              buttonLabel="Add New Lego Set"
+              formType="new"
+            />
+          }
+        />
+        <Route
+          exact
+          path="/edit/:id"
+          element={
+            <Form
+              posts={posts}
+              handleSubmit={handleFormSubmission}
+              buttonLabel="Edit Set Details"
+              formType="edit"
+            />
+          }
+        />
       </Routes>
     </div>
   );
