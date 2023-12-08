@@ -19,6 +19,9 @@ const SingleSet = ({ posts }) => {
         {currentSet.built ? <p>Assembled: Yes</p> : <p>Assembled: No</p>}
         <img src={currentSet.img_url} alt="lego set" />
       </div>
+      <Link to={`/edit/${params.id}`}>
+        <button>Edit Set</button>
+      </Link>
       <Link to={"/"}>
         <button>Back to Collection</button>
       </Link>

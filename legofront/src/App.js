@@ -91,7 +91,7 @@ function App() {
             <Form
               posts={posts}
               handleSubmit={handleFormSubmission}
-              buttonLabel="Edit Set Details"
+              buttonLabel="Confirm Changes"
               formType="edit"
             />
           }
