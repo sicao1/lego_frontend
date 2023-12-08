@@ -44,7 +44,7 @@ const Form = (props) => {
 
   const handleSubmission = (e) => {
     e.preventDefault();
-    props.handleSubmit(formData, props.fromType);
+    props.handleSubmit(formData, props.formType);
     navigate("/");
   };
 
