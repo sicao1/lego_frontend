@@ -12,7 +12,7 @@ const Form = (props) => {
   );
 
   const [formData, setFormData] = useState(
-    props.fromType === "new"
+    props.formType === "new"
       ? {
           name: "",
           item_number: "",
