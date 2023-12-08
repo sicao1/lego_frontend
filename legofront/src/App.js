@@ -36,7 +36,7 @@ function App() {
 
       <Routes>
         <Route exact path="/" element={<AllSets posts={posts} />} />
-        <Route exact path="/:id" element={<SingleSet posts={posts} />} />
+        <Route exact path="/post/:id" element={<SingleSet posts={posts} />} />
         <Route exact path="/new" element={<Form />} />
         <Route exact path="/edit/:id" element={<Form />} />
       </Routes>
