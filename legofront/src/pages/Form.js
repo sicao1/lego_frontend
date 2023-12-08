@@ -18,8 +18,8 @@ const Form = (props) => {
           item_number: "",
           theme: "",
           img_url: "",
-          built: "",
-          wishlist: "",
+          built: false,
+          wishlist: false,
           pieces: "",
         }
       : {
