@@ -11,23 +11,35 @@ const LegoSet = ({ post, deleteSet }) => {
 
   return (
     <>
-      <div className="eachSet">
-        <Link
-          to={`/set/${post.id}`}
-          className="text-lg text-blue-500 hover:text-blue-600 hover:underline"
-        >
-          <h1>{post.name}</h1>
-        </Link>
-        <p>Item #: {post.item_number}</p>
-        <p>Pieces: {post.pieces}</p>
-        <p>Theme: {post.theme}</p>
-        {post.built ? <p>Assembled: Yes</p> : <p>Assembled: No</p>}
-        {/* TODO not needed on main page, but might need elsewhere*/}
-        {/* {post.wishlist ? <p>Wishlist: Yes</p> : <p>Wishlist: No</p>} */}
-        <img src={post.img_url} alt="lego set" className="max-w-xs" />
-        <form onSubmit={handleDelete}>
-          <input type="submit" value="Delete Set" />
-        </form>
+      <div className="m-10 grid grid-cols-3 gap-4 border-2 border-dotted p-5 ">
+        <div className="flex items-center justify-center ">
+          <Link
+            to={`/set/${post.id}`}
+            className="text-darkslategrey hover:text-lightslategrey text-3xl transition-all duration-300 hover:underline"
+          >
+            <h1>{post.name}</h1>
+          </Link>
+        </div>
+
+        <div>
+          <p>Item #: {post.item_number}</p>
+          <p>Pieces: {post.pieces}</p>
+          <p>Theme: {post.theme}</p>
+          {post.built ? <p>Assembled: Yes</p> : <p>Assembled: No</p>}
+          {/* TODO not needed on main page, but might need elsewhere*/}
+          {/* {post.wishlist ? <p>Wishlist: Yes</p> : <p>Wishlist: No</p>} */}
+          <form onSubmit={handleDelete}>
+            <input
+              type="submit"
+              value="Delete Set"
+              className="button cursor-pointer"
+            />
+          </form>
+        </div>
+
+        <div>
+          <img src={post.img_url} alt="lego set" className="max-w-xs" />
+        </div>
       </div>
     </>
   );
