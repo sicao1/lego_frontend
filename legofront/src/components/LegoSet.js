@@ -12,7 +12,10 @@ const LegoSet = ({ post, deleteSet }) => {
   return (
     <>
       <div className="eachSet">
-        <Link to={`/set/${post.id}`}>
+        <Link
+          to={`/set/${post.id}`}
+          className="text-lg text-blue-500 hover:text-blue-600 hover:underline"
+        >
           <h1>{post.name}</h1>
         </Link>
         <p>Item #: {post.item_number}</p>

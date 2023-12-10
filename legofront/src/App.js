@@ -1,6 +1,7 @@
 // import "./App.css";
 
 // import components
+import Header from "./components/Header";
 import AllSets from "./pages/AllSets";
 import Form from "./pages/Form";
 import SingleSet from "./pages/SingleSet";
@@ -63,7 +64,7 @@ function App() {
 
   return (
     <div>
-      <h1>The Lego Terrarium</h1>
+      <Header />
 
       <Routes>
         <Route

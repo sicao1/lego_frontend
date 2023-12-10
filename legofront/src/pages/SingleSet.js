@@ -1,12 +1,13 @@
 import { useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
+import Button from "../components/Button";
 
 const SingleSet = ({ posts }) => {
   const params = useParams();
 
   const currentSet = useMemo(
     () => posts.find((post) => post.id === parseInt(params.id)),
-    [params.id, posts]
+    [params.id, posts],
   );
 
   return (
@@ -17,13 +18,13 @@ const SingleSet = ({ posts }) => {
         <p>Pieces: {currentSet.pieces}</p>
         <p>Theme: {currentSet.theme}</p>
         {currentSet.built ? <p>Assembled: Yes</p> : <p>Assembled: No</p>}
-        <img src={currentSet.img_url} alt="lego set" />
+        <img src={currentSet.img_url} alt="lego set" className="max-w-xs" />
       </div>
       <Link to={`/edit/${params.id}`}>
-        <button>Edit Set</button>
+        <Button>Edit info</Button>
       </Link>
       <Link to={"/"}>
-        <button>Back to Collection</button>
+        <Button>Back to Collection</Button>
       </Link>
     </>
   );
