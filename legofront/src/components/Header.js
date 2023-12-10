@@ -1,10 +1,9 @@
 const Header = () => {
   return (
-    <div>
+    <div className="relative">
       <h1 className="absolute inset-0 z-10 flex items-center justify-center text-7xl text-slate-300">
         The Lego Terrarium
       </h1>
-
       <img
         className="brightness-50"
         src="https://i.imgur.com/StDAHzU.jpg?1"
