@@ -1,4 +1,4 @@
-import "./App.css";
+// import "./App.css";
 
 // import components
 import AllSets from "./pages/AllSets";
@@ -62,7 +62,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div>
       <h1>The Lego Terrarium</h1>
 
       <Routes>

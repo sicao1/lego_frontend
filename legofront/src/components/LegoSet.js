@@ -21,7 +21,7 @@ const LegoSet = ({ post, deleteSet }) => {
         {post.built ? <p>Assembled: Yes</p> : <p>Assembled: No</p>}
         {/* TODO not needed on main page, but might need elsewhere*/}
         {/* {post.wishlist ? <p>Wishlist: Yes</p> : <p>Wishlist: No</p>} */}
-        <img src={post.img_url} alt="lego set" />
+        <img src={post.img_url} alt="lego set" className="max-w-xs" />
         <form onSubmit={handleDelete}>
           <input type="submit" value="Delete Set" />
         </form>
