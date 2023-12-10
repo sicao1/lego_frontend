@@ -6,9 +6,11 @@ const AllSets = (props) => (
     <Link to="/new">
       <button>Add New Lego Set</button>
     </Link>
-    {props.posts.map((post) => (
-      <LegoSet post={post} key={post.id} deleteSet={props.deleteSet} />
-    ))}
+    <div>
+      {props.posts.map((post) => (
+        <LegoSet post={post} key={post.id} deleteSet={props.deleteSet} />
+      ))}
+    </div>
   </>
 );
 

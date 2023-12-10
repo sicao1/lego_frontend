@@ -13,9 +13,9 @@ const SingleSet = ({ posts }) => {
     <>
       <div>
         <h1>{currentSet.name}</h1>
-        <p>{currentSet.item_number}</p>
-        <p>{currentSet.pieces}</p>
-        <p>{currentSet.theme}</p>
+        <p>Item #: {currentSet.item_number}</p>
+        <p>Pieces: {currentSet.pieces}</p>
+        <p>Theme: {currentSet.theme}</p>
         {currentSet.built ? <p>Assembled: Yes</p> : <p>Assembled: No</p>}
         <img src={currentSet.img_url} alt="lego set" />
       </div>
