@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 
 import Button from "../components/Button";
 import Details from "../components/Details";
-import Modal from "./EditModal";
+import Form from "./Form";
 
 const SingleSet = ({ posts }) => {
   const params = useParams();
@@ -31,7 +31,7 @@ const SingleSet = ({ posts }) => {
           ) : (
             <Details>Assembled: No</Details>
           )}
-          <Modal posts={currentSet.name} />
+          <Form />
           {/* <Link to={`/edit/${params.id}`}>
             <Button>Edit info</Button>
           </Link> */}

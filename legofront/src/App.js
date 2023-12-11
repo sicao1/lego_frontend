@@ -72,7 +72,7 @@ function App() {
           element={<AllSets posts={posts} deleteSet={deleteSet} />}
         />
         <Route exact path="/set/:id" element={<SingleSet posts={posts} />} />
-        <Route
+        {/* <Route
           exact
           path="/new"
           element={
@@ -83,7 +83,7 @@ function App() {
               formType="new"
             />
           }
-        />
+        /> */}
         <Route
           exact
           path="/edit/:id"
