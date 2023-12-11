@@ -1,16 +1,9 @@
 import React from "react";
 
-import Button from "../components/Button";
+import Form from "./Form";
 
 const Modal = ({ posts }) => {
   const [showModal, setShowModal] = React.useState(false);
-
-  // const params = useParams();
-
-  // const currentSet = useMemo(
-  //   () => posts.find((post) => post.id === parseInt(params.id)),
-  //   [params.id, posts],
-  // );
 
   return (
     <>
@@ -29,7 +22,7 @@ const Modal = ({ posts }) => {
               <div className="relative flex w-full flex-col rounded-lg border-0 bg-white shadow-lg outline-none focus:outline-none">
                 {/*header*/}
                 <div className="border-blueGray-200 flex items-start justify-between rounded-t border-b border-solid p-5">
-                  <h3 className="text-3xl font-semibold">Modal Title</h3>
+                  <h3 className="text-3xl font-semibold">{posts}</h3>
                   <button
                     className="float-right ml-auto border-0 bg-transparent p-1 text-3xl font-semibold leading-none text-black opacity-5 outline-none focus:outline-none"
                     onClick={() => setShowModal(false)}
@@ -41,14 +34,15 @@ const Modal = ({ posts }) => {
                 </div>
                 {/*body*/}
                 <div className="relative flex-auto p-6">
-                  <p className="text-blueGray-500 my-4 text-lg leading-relaxed">
+                  {/* <p className="text-blueGray-500 my-4 text-lg leading-relaxed">
                     I always felt like I could do anything. That’s the main
                     thing people are controlled by! Thoughts- their perception
                     of themselves! They're slowed down by their perception of
                     themselves. If you're taught you can’t do anything, you
                     won’t do anything. I was taught I could do everything.
-                  </p>
+                  </p> */}
                 </div>
+
                 {/*footer*/}
                 <div className="border-blueGray-200 flex items-center justify-end rounded-b border-t border-solid p-6">
                   <button

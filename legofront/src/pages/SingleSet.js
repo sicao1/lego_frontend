@@ -31,7 +31,10 @@ const SingleSet = ({ posts }) => {
           ) : (
             <Details>Assembled: No</Details>
           )}
-          <Modal />
+          <Modal posts={currentSet.name} />
+          {/* <Link to={`/edit/${params.id}`}>
+            <Button>Edit info</Button>
+          </Link> */}
           <Link to={"/"}>
             <Button>Back to Collection</Button>
           </Link>
@@ -41,10 +44,6 @@ const SingleSet = ({ posts }) => {
           <img src={currentSet.img_url} alt="lego set" className="max-w-xs" />
         </div>
       </div>
-
-      {/* <Link to={`/edit/${params.id}`}>
-        <Button>Edit info</Button>
-      </Link> */}
     </>
   );
 };
