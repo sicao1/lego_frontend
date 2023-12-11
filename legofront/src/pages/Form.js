@@ -95,12 +95,12 @@ const Form = (props) => {
           value={formData.img_url}
           name="img_url"
         />
+        <input
+          type="submit"
+          value={props.buttonLabel}
+          className="button cursor-pointer"
+        />
       </form>
-      <input
-        type="submit"
-        value={props.buttonLabel}
-        className="button cursor-pointer"
-      />
     </div>
   );
 };
