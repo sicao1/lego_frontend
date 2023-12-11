@@ -3,7 +3,6 @@ import { Link, useParams } from "react-router-dom";
 
 import Button from "../components/Button";
 import Details from "../components/Details";
-import Form from "./Form";
 
 const SingleSet = ({ posts }) => {
   const params = useParams();

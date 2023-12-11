@@ -1,5 +1,8 @@
 import { useState, useMemo } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
+
+import FormDiv from "../components/FormStyle/FormDiv";
+import Button from "../components/Button";
 
 const Form = (props) => {
   const navigate = useNavigate();
@@ -51,55 +54,84 @@ const Form = (props) => {
   };
 
   return (
-    <div>
+    <div className="m-10 border-2 border-dotted p-5">
       <form onSubmit={handleSubmission}>
-        <h3>Name</h3>
-        <input
-          type="text"
-          onChange={handleChange}
-          value={formData.name}
-          name="name"
-        />
-        <h3>Item #</h3>
-        <input
-          type="number"
-          onChange={handleChange}
-          value={formData.item_number}
-          name="item_number"
-        />
-        <h3>Pieces</h3>
-        <input
-          type="number"
-          onChange={handleChange}
-          value={formData.pieces}
-          name="pieces"
-        />
-        <h3>Theme</h3>
-        <input
-          type="text"
-          onChange={handleChange}
-          value={formData.theme}
-          name="theme"
-        />
-        <h3>Assembled</h3>
-        <input
-          type="checkbox"
-          onChange={handleChange}
-          value={formData.built}
-          name="built"
-        />
-        <h3>Img Url</h3>
-        <input
-          type="text"
-          onChange={handleChange}
-          value={formData.img_url}
-          name="img_url"
-        />
-        <input
-          type="submit"
-          value={props.buttonLabel}
-          className="button cursor-pointer"
-        />
+        <FormDiv>
+          <h3 className="font-semibold">Name: </h3>
+          <input
+            type="text"
+            onChange={handleChange}
+            value={formData.name}
+            name="name"
+            className="finput"
+          />
+        </FormDiv>
+
+        <FormDiv>
+          <h3 className="font-semibold">Item #: </h3>
+          <input
+            type="number"
+            onChange={handleChange}
+            value={formData.item_number}
+            name="item_number"
+            className="finput"
+          />
+        </FormDiv>
+
+        <FormDiv>
+          <h3 className="font-semibold">Pieces:</h3>
+          <input
+            type="number"
+            onChange={handleChange}
+            value={formData.pieces}
+            name="pieces"
+            className="finput"
+          />
+        </FormDiv>
+
+        <FormDiv>
+          <h3 className="font-semibold">Theme: </h3>
+          <input
+            type="text"
+            onChange={handleChange}
+            value={formData.theme}
+            name="theme"
+            className="finput"
+          />
+        </FormDiv>
+
+        <FormDiv>
+          <h3 className="font-semibold">Img Url</h3>
+          <input
+            type="text"
+            onChange={handleChange}
+            value={formData.img_url}
+            name="img_url"
+            className="finput"
+          />
+        </FormDiv>
+
+        <FormDiv>
+          <h3 className="font-semibold">Assembled: </h3>
+          <input
+            type="checkbox"
+            onChange={handleChange}
+            value={formData.built}
+            name="built"
+            className="ml-2 w-10"
+          />
+        </FormDiv>
+
+        <div className="flex justify-end">
+          <Link to={`/set/${params.id}`}>
+            <Button>Cancel</Button>
+          </Link>
+          <input
+            type="submit"
+            value={props.buttonLabel}
+            className="button cursor-pointer"
+          />
+        </div>
       </form>
     </div>
   );

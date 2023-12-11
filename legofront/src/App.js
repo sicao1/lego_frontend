@@ -1,9 +1,10 @@
 // import "./App.css";
 
 // import components
-import Header from "./components/Header";
 import AllSets from "./pages/AllSets";
 import Form from "./pages/Form";
+import Header from "./components/Header";
+// import Modal from "./components/Modal";
 import SingleSet from "./pages/SingleSet";
 
 // import hooks
@@ -72,7 +73,7 @@ function App() {
           element={<AllSets posts={posts} deleteSet={deleteSet} />}
         />
         <Route exact path="/set/:id" element={<SingleSet posts={posts} />} />
-        {/* <Route
+        <Route
           exact
           path="/new"
           element={
@@ -83,7 +84,7 @@ function App() {
               formType="new"
             />
           }
-        /> */}
+        />
         <Route
           exact
           path="/edit/:id"

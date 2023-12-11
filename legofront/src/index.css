@@ -18,6 +18,9 @@ code {
 
 @layer components {
   .button {
-    @apply bg-darkslateblue hover:bg-lightdarkslateblue mr-2 inline-block px-4 py-3 font-semibold uppercase tracking-wide text-stone-200 transition-colors duration-300;
+    @apply mr-2 inline-block bg-darkslateblue px-4 py-3 font-semibold uppercase tracking-wide text-stone-200 transition-colors duration-300 hover:bg-lightdarkslateblue;
+  }
+  .finput {
+    @apply ml-2 grow rounded-md border-2 pl-1 focus:border-darkslateblue;
   }
 }
