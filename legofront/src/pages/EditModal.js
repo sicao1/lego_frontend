@@ -1,15 +1,25 @@
 import React from "react";
 
-const Modal = () => {
+import Button from "../components/Button";
+
+const Modal = ({ posts }) => {
   const [showModal, setShowModal] = React.useState(false);
+
+  // const params = useParams();
+
+  // const currentSet = useMemo(
+  //   () => posts.find((post) => post.id === parseInt(params.id)),
+  //   [params.id, posts],
+  // );
+
   return (
     <>
       <button
-        className="mb-1 mr-1 rounded bg-pink-500 px-6 py-3 text-sm font-bold uppercase text-white shadow outline-none transition-all duration-150 ease-linear hover:shadow-lg focus:outline-none active:bg-pink-600"
-        type="button"
+        className="button"
+        type="Button"
         onClick={() => setShowModal(true)}
       >
-        Open regular modal
+        Edit Info
       </button>
       {showModal ? (
         <>
