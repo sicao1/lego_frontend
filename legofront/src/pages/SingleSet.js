@@ -31,10 +31,9 @@ const SingleSet = ({ posts }) => {
           ) : (
             <Details>Assembled: No</Details>
           )}
-          <Form />
-          {/* <Link to={`/edit/${params.id}`}>
+          <Link to={`/edit/${params.id}`}>
             <Button>Edit info</Button>
-          </Link> */}
+          </Link>
           <Link to={"/"}>
             <Button>Back to Collection</Button>
           </Link>
