@@ -12,8 +12,8 @@ const LegoSet = ({ post, deleteSet }) => {
 
   return (
     <>
-      <div className="m-10 grid grid-flow-row auto-rows-min grid-cols-2 grid-rows-2 gap-4 border-2 border-dotted p-5">
-        <div className="col-start-1 col-end-2 flex items-center justify-center">
+      <div className="m-10 grid grid-flow-row auto-rows-min grid-cols-2 gap-4 border-2 border-dotted p-5">
+        <div className="bg-superlightgreen col-start-1 col-end-2 row-span-2 flex items-center justify-center">
           <Link
             to={`/set/${post.id}`}
             className="text-3xl text-darkslategrey transition-all duration-300 hover:text-lightslategrey hover:underline"
@@ -22,13 +22,16 @@ const LegoSet = ({ post, deleteSet }) => {
           </Link>
         </div>
 
-        <div className="col-span-full row-start-2 flex justify-around">
+        <div className="col-span-full row-span-1 mt-10 flex h-min auto-rows-auto">
           <Details>Item #: {post.item_number}</Details>
-          <p>Pieces: {post.pieces}</p>
-          <p>Theme: {post.theme}</p>
-          {post.built ? <p>Assembled: Yes</p> : <p>Assembled: No</p>}
-          {/* TODO not needed on main page, but might need elsewhere*/}
-          {/* {post.wishlist ? <p>Wishlist: Yes</p> : <p>Wishlist: No</p>} */}
+          <Details>Pieces: {post.pieces}</Details>
+          <Details>Theme: {post.theme}</Details>
+          {post.built ? (
+            <Details>Assembled: Yes</Details>
+          ) : (
+            <Details>Assembled: No</Details>
+          )}
+
           <form onSubmit={handleDelete}>
             <input
               type="submit"
@@ -38,7 +41,7 @@ const LegoSet = ({ post, deleteSet }) => {
           </form>
         </div>
 
-        <div className="flex items-center justify-center">
+        <div className="col-start-2 row-start-1 flex items-center justify-center">
           <img src={post.img_url} alt="lego set" className="max-h-52" />
         </div>
       </div>
