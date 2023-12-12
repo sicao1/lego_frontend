@@ -51,8 +51,6 @@ function App() {
         body: JSON.stringify(data),
       });
       getSets();
-      // const editedItem = await response.json();
-      // setPosts([editedItem, ...posts]);
     }
   };
 

@@ -12,8 +12,15 @@ const AllSets = (props) => {
   };
 
   let sortedPosts = [...props.posts];
-  if (sortType === "name") {
+
+  if (sortType === "default") {
+    sortedPosts.sort((a, b) => b.id - a.id);
+  } else if (sortType === "name") {
     sortedPosts.sort((a, b) => a.name.localeCompare(b.name));
+  } else if (sortType === "piecesASC") {
+    sortedPosts.sort((a, b) => a.pieces - b.pieces);
+  } else if (sortType === "piecesDEC") {
+    sortedPosts.sort((a, b) => b.pieces - a.pieces);
   }
 
   return (
@@ -21,6 +28,12 @@ const AllSets = (props) => {
       <div>
         <button onClick={() => handleSort("default")}>Default</button>
         <button onClick={() => handleSort("name")}>Name</button>
+        <button onClick={() => handleSort("piecesASC")}>
+          Pieces Low to High
+        </button>
+        <button onClick={() => handleSort("piecesDEC")}>
+          Pieces High to Low
+        </button>
       </div>
       <Link to="/new">
         <Button>Add New Lego Set</Button>
