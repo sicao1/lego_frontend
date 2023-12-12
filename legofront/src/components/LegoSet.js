@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import Details from "./Details";
+import Details from "./Style/Details";
 
 const LegoSet = ({ post, deleteSet }) => {
   const naviagte = useNavigate();

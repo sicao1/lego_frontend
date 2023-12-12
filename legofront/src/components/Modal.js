@@ -1,7 +1,7 @@
 import React from "react";
 import Form from "../pages/Form";
 
-export default function Modal({ currentSet }) {
+export default function Modal() {
   const [showModal, setShowModal] = React.useState(false);
   return (
     <>

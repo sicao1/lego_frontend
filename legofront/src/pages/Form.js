@@ -1,8 +1,8 @@
 import { useState, useMemo } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 
-import FormDiv from "../components/FormStyle/FormDiv";
-import Button from "../components/Button";
+import FormDiv from "../components/Style/FormDiv";
+import Button from "../components/Style/Button";
 
 const Form = (props) => {
   const navigate = useNavigate();

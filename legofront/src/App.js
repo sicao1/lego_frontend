@@ -39,6 +39,8 @@ function App() {
         body: JSON.stringify(data),
       });
       getSets();
+      // const newItem = await response.json();
+      // setPosts([newItem, ...posts]);
     } else {
       // this will be where our edit fetch goes
       const response = await fetch(`${apiURL}${data.id}/`, {
@@ -49,6 +51,8 @@ function App() {
         body: JSON.stringify(data),
       });
       getSets();
+      // const editedItem = await response.json();
+      // setPosts([editedItem, ...posts]);
     }
   };
 

@@ -1,8 +1,8 @@
 import { useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
 
-import Button from "../components/Button";
-import Details from "../components/Details";
+import Button from "../components/Style/Button";
+import Details from "../components/Style/Details";
 
 const SingleSet = ({ posts }) => {
   const params = useParams();
