@@ -22,7 +22,7 @@ const LegoSet = ({ post, deleteSet }) => {
           </Link>
         </div>
 
-        <div className="col-span-full row-span-1 mt-5 h-min auto-rows-auto sm:mt-10 sm:flex">
+        <div className="col-span-full row-span-1 h-min auto-rows-auto sm:mt-10 sm:flex">
           <Details>Item #: {post.item_number}</Details>
           <Details>Pieces: {post.pieces}</Details>
           <Details>Theme: {post.theme}</Details>
@@ -41,7 +41,7 @@ const LegoSet = ({ post, deleteSet }) => {
           </form>
         </div>
 
-        <div className="col-start-2 row-start-1 flex items-center justify-center">
+        <div className="col-start-2 row-span-2 row-start-1 flex items-center justify-center shadow-lg">
           <img src={post.img_url} alt="lego set" className="max-h-52" />
         </div>
       </div>
