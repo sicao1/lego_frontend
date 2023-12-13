@@ -77,7 +77,7 @@ const Form = (props) => {
       name: result.results[0].name,
       item_number: result.results[0].set_num,
       theme: result.results[0].theme_id,
-      img_url: result.results[0].image_url,
+      img_url: result.results[0].set_img_url,
       built: false,
       wishlist: false,
       pieces: result.results[0].num_parts,
