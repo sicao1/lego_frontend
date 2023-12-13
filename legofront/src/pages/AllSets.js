@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 import LegoSet from "../components/LegoSet";
 import Button from "../components/Style/Button";
-import { useState } from "react";
+import Dropdown from "../components/Dropdown";
 
 const AllSets = (props) => {
   const [sortType, setSortType] = useState("default");
@@ -23,27 +24,30 @@ const AllSets = (props) => {
     sortedPosts.sort((a, b) => b.pieces - a.pieces);
   }
 
+  const handleDropdownSort = (type) => {
+    handleSort(type);
+  };
+
   return (
-    <>
-      <div>
-        <button onClick={() => handleSort("default")}>Default</button>
-        <button onClick={() => handleSort("name")}>Name</button>
-        <button onClick={() => handleSort("piecesASC")}>
-          Pieces Low to High
-        </button>
-        <button onClick={() => handleSort("piecesDEC")}>
-          Pieces High to Low
-        </button>
+    <div>
+      <div className="mx-8 mt-8 flex items-center justify-between">
+        <h1 className="text-stormsinparis semi-bold text-4xl">
+          Your Collection
+        </h1>
+        <div>
+          <Link to="/new">
+            <Button>Add New Lego Set</Button>
+          </Link>
+          <Dropdown handleDropdownSort={handleDropdownSort} />
+        </div>
       </div>
-      <Link to="/new">
-        <Button>Add New Lego Set</Button>
-      </Link>
+
       <div>
         {sortedPosts.map((post) => (
           <LegoSet post={post} key={post.id} deleteSet={props.deleteSet} />
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

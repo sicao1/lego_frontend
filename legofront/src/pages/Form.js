@@ -77,7 +77,6 @@ const Form = (props) => {
             className="finput"
           />
         </FormDiv>
-
         <FormDiv>
           <h3 className="font-semibold">Pieces:</h3>
           <input
@@ -123,7 +122,7 @@ const Form = (props) => {
         </FormDiv>
 
         <div className="flex justify-end">
-          <Link to={`/set/${params.id}`}>
+          <Link to={"/"}>
             <Button>Cancel</Button>
           </Link>
           <input

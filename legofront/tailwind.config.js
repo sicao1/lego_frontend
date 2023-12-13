@@ -9,6 +9,7 @@ module.exports = {
         darkslategrey: "#2F4F39",
         lightslategrey: "#406c4e",
         superlightgreen: "#62A678",
+        stormsinparis: "#2F454F",
       },
     },
   },

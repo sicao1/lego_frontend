@@ -12,8 +12,8 @@ const LegoSet = ({ post, deleteSet }) => {
 
   return (
     <>
-      <div className="m-10 grid grid-flow-row auto-rows-min grid-cols-2 gap-4 border-2 border-dotted p-5">
-        <div className="to-superlightgreen col-start-1 col-end-2 row-span-2 flex items-center justify-center bg-gradient-to-r from-darkslategrey shadow-lg">
+      <div className="mx-10 mb-10 mt-4 grid grid-flow-row auto-rows-min grid-cols-2 gap-4 border-2 border-dotted p-5">
+        <div className="col-start-1 col-end-2 row-span-2 flex items-center justify-center bg-gradient-to-r from-darkslategrey to-superlightgreen shadow-lg">
           <Link
             to={`/set/${post.id}`}
             className="text-sm text-slate-100 transition-all duration-300 hover:text-slate-300 hover:underline sm:text-lg md:text-3xl"
