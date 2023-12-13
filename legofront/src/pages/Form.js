@@ -69,13 +69,17 @@ const Form = (props) => {
       `https://rebrickable.com/api/v3/lego/sets/?search=${searchData}&page_size=1&key=${apiKEY}`,
     );
     const result = await response.json();
+
+    // need to edit item_nubmer fetched result
+    const itemNumberWithout = result.results[0].set_num.split("-")[0];
+
     setSearchedData(result);
 
     //Update Form
     setFormData((prevData) => ({
       ...prevData,
       name: result.results[0].name,
-      item_number: result.results[0].set_num,
+      item_number: parseInt(itemNumberWithout),
       theme: result.results[0].theme_id,
       img_url: result.results[0].set_img_url,
       built: false,
