@@ -53,8 +53,24 @@ const Form = (props) => {
     navigate("/");
   };
 
+  const handleSearch = (e) => {
+    e.preventDefault();
+    props.fetchData();
+  };
+
   return (
     <div className="m-10 border-2 border-dotted p-5">
+      <div>
+        <form onSubmit={handleSearch}>
+          <h3>Search:</h3>
+          <input
+            type="text"
+            placeholder="Search by Name or Set Number"
+            className="finput"
+          />
+          <button type="submit">submit</button>
+        </form>
+      </div>
       <form onSubmit={handleSubmission}>
         <FormDiv>
           <h3 className="font-semibold">Name: </h3>

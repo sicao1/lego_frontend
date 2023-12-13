@@ -65,17 +65,17 @@ function App() {
     getSets();
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(
-        `https://rebrickable.com/api/v3/lego/sets/?search=boba&page_size=1&key=${apiKEY}`,
-      );
+  // function for fetching api infomation for form
+  const fetchData = async () => {
+    const response = await fetch(
+      `https://rebrickable.com/api/v3/lego/sets/?search=boba&page_size=1&key=${apiKEY}`,
+    );
+    const result = await response.json();
+    console.log(result);
+    setDataSearch(result);
+  };
 
-      const result = await response.json();
-      console.log(result.results[0].name);
-      setDataSearch(result);
-    };
-    fetchData();
+  useEffect(() => {
     getSets();
   }, []);
 
@@ -96,6 +96,7 @@ function App() {
             <Form
               posts={posts}
               handleSubmit={handleFormSubmission}
+              fetchData={fetchData}
               buttonLabel="Add New Lego Set"
               formType="new"
             />
