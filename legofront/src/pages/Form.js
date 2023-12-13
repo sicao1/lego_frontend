@@ -66,7 +66,7 @@ const Form = (props) => {
 
   const fetchData = async () => {
     const response = await fetch(
-      `https://rebrickable.com/api/v3/lego/sets/?search=boba&page_size=1&key=${apiKEY}`,
+      `https://rebrickable.com/api/v3/lego/sets/?search=${searchData}&page_size=1&key=${apiKEY}`,
     );
     const result = await response.json();
     setSearchedData(result);
