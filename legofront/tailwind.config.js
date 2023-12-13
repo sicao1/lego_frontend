@@ -10,6 +10,8 @@ module.exports = {
         lightslategrey: "#406c4e",
         superlightgreen: "#62A678",
         stormsinparis: "#2F454F",
+        footergreen: "#1D3224",
+        footerlitegreen: "#3F6D4F",
       },
     },
   },

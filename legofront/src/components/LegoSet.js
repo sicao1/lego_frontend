@@ -22,7 +22,7 @@ const LegoSet = ({ post, deleteSet }) => {
           </Link>
         </div>
 
-        <div className="col-span-full row-span-1 h-min auto-rows-auto sm:mt-10 sm:flex">
+        <div className="col-span-full row-span-1 h-min auto-rows-auto sm:mt-5 sm:flex">
           <Details>Item #: {post.item_number}</Details>
           <Details>Pieces: {post.pieces}</Details>
           <Details>Theme: {post.theme}</Details>

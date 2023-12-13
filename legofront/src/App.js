@@ -2,6 +2,7 @@
 
 // import components
 import AllSets from "./pages/AllSets";
+import Footer from "./components/Footer";
 import Form from "./pages/Form";
 import Header from "./components/Header";
 // import Modal from "./components/Modal";
@@ -98,6 +99,7 @@ function App() {
           }
         />
       </Routes>
+      <Footer />
     </div>
   );
 }
