@@ -17,8 +17,6 @@ import { Route, Routes } from "react-router-dom";
 const apiURL =
   "https://lego-terrarium-backend-57d807f8ae0e.herokuapp.com/legoapp/";
 
-const apiKEY = process.env.REACT_APP_API_KEY;
-
 function App() {
   // setup state for our posts
   const [posts, setPosts] = useState([]);
@@ -65,16 +63,6 @@ function App() {
     getSets();
   };
 
-  // function for fetching api infomation for form
-  const fetchData = async () => {
-    const response = await fetch(
-      `https://rebrickable.com/api/v3/lego/sets/?search=boba&page_size=1&key=${apiKEY}`,
-    );
-    const result = await response.json();
-    console.log(result);
-    setDataSearch(result);
-  };
-
   useEffect(() => {
     getSets();
   }, []);
@@ -96,7 +84,6 @@ function App() {
             <Form
               posts={posts}
               handleSubmit={handleFormSubmission}
-              fetchData={fetchData}
               buttonLabel="Add New Lego Set"
               formType="new"
             />

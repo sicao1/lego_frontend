@@ -4,6 +4,8 @@ import { useNavigate, useParams, Link } from "react-router-dom";
 import FormDiv from "../components/Style/FormDiv";
 import Button from "../components/Style/Button";
 
+const apiKEY = process.env.REACT_APP_API_KEY;
+
 const Form = (props) => {
   const navigate = useNavigate();
   const params = useParams();
@@ -58,14 +60,51 @@ const Form = (props) => {
     props.fetchData();
   };
 
+  // use API to fill new create form
+  const [searchData, setSearchData] = useState("");
+  const [searchedData, setSearchedData] = useState(null);
+
+  const fetchData = async () => {
+    const response = await fetch(
+      `https://rebrickable.com/api/v3/lego/sets/?search=boba&page_size=1&key=${apiKEY}`,
+    );
+    const result = await response.json();
+    setSearchedData(result);
+
+    //Update Form
+    setFormData((prevData) => ({
+      ...prevData,
+      name: result.results[0].name,
+      item_number: result.results[0].set_num,
+      theme: result.results[0].theme_id,
+      img_url: result.results[0].image_url,
+      built: false,
+      wishlist: false,
+      pieces: result.results[0].num_parts,
+    }));
+  };
+
+  // Function to handle search input change
+  const handleSearchChange = (e) => {
+    setSearchData(e.target.value);
+  };
+
+  // Function to handle search form submission
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    fetchData();
+  };
+
   return (
     <div className="m-10 border-2 border-dotted p-5">
       <div>
-        <form onSubmit={handleSearch}>
+        <form onSubmit={handleSearchSubmit}>
           <h3>Search:</h3>
           <input
             type="text"
             placeholder="Search by Name or Set Number"
+            value={searchData}
+            onChange={handleSearchChange}
             className="finput"
           />
           <button type="submit">submit</button>
