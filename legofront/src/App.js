@@ -74,13 +74,14 @@ function App() {
 
   return (
     <div>
-      <Header />
       {enter === false ? (
-        <div>
-          <ButtonEnter onClick={handleEnterClick}>Enter Site ↯</ButtonEnter>
-        </div>
+        <Header handleEnterClick={handleEnterClick} />
       ) : (
+        // <div>
+        //   <ButtonEnter onClick={handleEnterClick}></ButtonEnter>
+        // </div>
         <>
+          <Header />
           <Routes>
             <Route
               exact

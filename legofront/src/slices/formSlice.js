@@ -22,6 +22,7 @@ export const fetchDataFromAPI = createAsyncThunk(
   },
 );
 
+// Toolkit: call createSlice function that accepts an object of options
 const formSlice = createSlice({
   name: "form",
   initialState: {
@@ -37,6 +38,7 @@ const formSlice = createSlice({
     searchedData: null,
   },
   reducers: {
+    // basically mutate the current property that lives on the current state
     setFormData(state, action) {
       state.formData = action.payload;
     },
@@ -52,6 +54,8 @@ const formSlice = createSlice({
       };
     },
   },
+  // option from createSlice that helps handle actions dispatched outside of this slice i.e. fetchDataFromAPI
+  // once fetch is successful updates and executes below
   extraReducers: (builder) => {
     builder.addCase(fetchDataFromAPI.fulfilled, (state, action) => {
       state.formData = action.payload;

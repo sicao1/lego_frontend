@@ -32,6 +32,7 @@ const Form = (props) => {
     }
   }, [props.formType, params.id, dispatch, props.posts]);
 
+  // functions
   const handleChange = (e) => {
     const value =
       e.target.type === "checkbox" ? e.target.checked : e.target.value;
