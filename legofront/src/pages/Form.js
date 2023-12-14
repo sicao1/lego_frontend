@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -27,6 +27,8 @@ const Form = (props) => {
       if (currentSet) {
         dispatch(setFormData(currentSet));
       }
+    } else if (props.formType === "new") {
+      dispatch(resetFormData());
     }
   }, [props.formType, params.id, dispatch, props.posts]);
 
