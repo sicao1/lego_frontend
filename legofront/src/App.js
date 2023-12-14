@@ -2,10 +2,10 @@
 
 // import components
 import AllSets from "./pages/AllSets";
+import ButtonEnter from "./components/Style/ButtonEnter";
 import Footer from "./components/Footer";
 import Form from "./pages/Form";
 import Header from "./components/Header";
-// import Modal from "./components/Modal";
 import SingleSet from "./pages/SingleSet";
 
 // import hooks
@@ -13,7 +13,6 @@ import { useState, useEffect } from "react";
 
 // import components from React Router
 import { Route, Routes } from "react-router-dom";
-import Button from "./components/Style/Button";
 
 const apiURL =
   "https://lego-terrarium-backend-57d807f8ae0e.herokuapp.com/legoapp/";
@@ -78,7 +77,7 @@ function App() {
       <Header />
       {enter === false ? (
         <div>
-          <button onClick={handleEnterClick}>Enter</button>
+          <ButtonEnter onClick={handleEnterClick}>Enter Site ↯</ButtonEnter>
         </div>
       ) : (
         <>
