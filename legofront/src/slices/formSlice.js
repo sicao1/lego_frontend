@@ -10,6 +10,14 @@ export const fetchDataFromAPI = createAsyncThunk(
     );
     const result = await response.json();
     const itemNumberWithout = result.results[0].set_num.split("-")[0];
+
+    // need to fetch again to convert theme_id number to string
+    // const themeIdName = await fetch(
+    //   `https://rebrickable.com/api/v3/lego/themes/?search=${result.results[0].theme_id}&page_size=1&key=${apiKEY}`,
+    // );
+    // const themeResult = await themeIdName.json();
+    // const themeFinalName = themeResult.resutls[0].name;
+
     return {
       name: result.results[0].name,
       item_number: parseInt(itemNumberWithout),

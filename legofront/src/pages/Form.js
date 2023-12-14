@@ -93,6 +93,7 @@ const Form = (props) => {
             value={formData.name}
             name="name"
             className="finput"
+            required
           />
         </FormDiv>
 
@@ -104,6 +105,7 @@ const Form = (props) => {
             value={formData.item_number}
             name="item_number"
             className="finput"
+            required
           />
         </FormDiv>
         <FormDiv>
@@ -114,6 +116,7 @@ const Form = (props) => {
             value={formData.pieces}
             name="pieces"
             className="finput"
+            required
           />
         </FormDiv>
 
@@ -125,6 +128,7 @@ const Form = (props) => {
             value={formData.theme}
             name="theme"
             className="finput"
+            required
           />
         </FormDiv>
 
@@ -136,6 +140,7 @@ const Form = (props) => {
             value={formData.img_url}
             name="img_url"
             className="finput"
+            required
           />
         </FormDiv>
 

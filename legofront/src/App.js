@@ -33,26 +33,36 @@ function App() {
   };
 
   const handleFormSubmission = async (data, type) => {
-    if (type === "new") {
-      //if new create a resource
-      const response = await fetch(apiURL, {
-        method: "post",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-      getSets();
-    } else {
-      // this will be where our edit fetch goes
-      const response = await fetch(`${apiURL}${data.id}/`, {
-        method: "put",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-      getSets();
+    try {
+      if (type === "new") {
+        //if new create a resource
+        const response = await fetch(apiURL, {
+          method: "post",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+        if (!response.ok) {
+          throw new Error("Failed to add new Lego set, missing field");
+        }
+        getSets();
+      } else {
+        // this will be where our edit fetch goes
+        const response = await fetch(`${apiURL}${data.id}/`, {
+          method: "put",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+        if (!response.ok) {
+          throw new Error("Failed to edit new Lego set, missing field");
+        }
+        getSets();
+      }
+    } catch (error) {
+      console.log(error.message);
     }
   };
 
