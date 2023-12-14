@@ -13,6 +13,9 @@ module.exports = {
         footergreen: "#1D3224",
         footerlitegreen: "#3F6D4F",
       },
+      right: {
+        "11/20": "55%",
+      },
     },
   },
   plugins: [],

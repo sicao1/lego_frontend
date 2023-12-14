@@ -6,7 +6,15 @@ const Header = (props) => {
       <h1 className="absolute inset-0 z-10 flex items-center justify-center text-4xl text-slate-200 sm:text-7xl">
         The Lego Terrarium
       </h1>
-      <ButtonEnter onClick={props.handleEnterClick}>Enter Here</ButtonEnter>
+      <div>
+        {props.enter === false ? (
+          <ButtonEnter onClick={props.handleEnterClick}>
+            Enter Site ↯
+          </ButtonEnter>
+        ) : (
+          <></>
+        )}
+      </div>
       {/* TODO - create and add a slogan */}
       <img
         className="brightness-50"

@@ -2,7 +2,6 @@
 
 // import components
 import AllSets from "./pages/AllSets";
-import ButtonEnter from "./components/Style/ButtonEnter";
 import Footer from "./components/Footer";
 import Form from "./pages/Form";
 import Header from "./components/Header";
@@ -75,11 +74,8 @@ function App() {
   return (
     <div>
       {enter === false ? (
-        <Header handleEnterClick={handleEnterClick} />
+        <Header handleEnterClick={handleEnterClick} enter={enter} />
       ) : (
-        // <div>
-        //   <ButtonEnter onClick={handleEnterClick}></ButtonEnter>
-        // </div>
         <>
           <Header />
           <Routes>
