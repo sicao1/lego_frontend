@@ -13,6 +13,7 @@ import { useState, useEffect } from "react";
 
 // import components from React Router
 import { Route, Routes } from "react-router-dom";
+import Button from "./components/Style/Button";
 
 const apiURL =
   "https://lego-terrarium-backend-57d807f8ae0e.herokuapp.com/legoapp/";
@@ -20,9 +21,10 @@ const apiURL =
 function App() {
   // setup state for our posts
   const [posts, setPosts] = useState([]);
+  const [enter, setEnter] = useState(false);
 
   // search api
-  const [dataSearch, setDataSearch] = useState([]);
+  // const [dataSearch, setDataSearch] = useState([]);
 
   // functions
   const getSets = async () => {
@@ -63,6 +65,10 @@ function App() {
     getSets();
   };
 
+  const handleEnterClick = () => {
+    setEnter(true);
+  };
+
   useEffect(() => {
     getSets();
   }, []);
@@ -70,39 +76,51 @@ function App() {
   return (
     <div>
       <Header />
-      <Routes>
-        <Route
-          exact
-          path="/"
-          element={<AllSets posts={posts} deleteSet={deleteSet} />}
-        />
-        <Route exact path="/set/:id" element={<SingleSet posts={posts} />} />
-        <Route
-          exact
-          path="/new"
-          element={
-            <Form
-              posts={posts}
-              handleSubmit={handleFormSubmission}
-              buttonLabel="Add New Lego Set"
-              formType="new"
+      {enter === false ? (
+        <div>
+          <button onClick={handleEnterClick}>Enter</button>
+        </div>
+      ) : (
+        <>
+          <Routes>
+            <Route
+              exact
+              path="/"
+              element={<AllSets posts={posts} deleteSet={deleteSet} />}
             />
-          }
-        />
-        <Route
-          exact
-          path="/edit/:id"
-          element={
-            <Form
-              posts={posts}
-              handleSubmit={handleFormSubmission}
-              buttonLabel="Confirm Changes"
-              formType="edit"
+            <Route
+              exact
+              path="/set/:id"
+              element={<SingleSet posts={posts} />}
             />
-          }
-        />
-      </Routes>
-      <Footer />
+            <Route
+              exact
+              path="/new"
+              element={
+                <Form
+                  posts={posts}
+                  handleSubmit={handleFormSubmission}
+                  buttonLabel="Add New Lego Set"
+                  formType="new"
+                />
+              }
+            />
+            <Route
+              exact
+              path="/edit/:id"
+              element={
+                <Form
+                  posts={posts}
+                  handleSubmit={handleFormSubmission}
+                  buttonLabel="Confirm Changes"
+                  formType="edit"
+                />
+              }
+            />
+          </Routes>
+          <Footer />
+        </>
+      )}
     </div>
   );
 }
