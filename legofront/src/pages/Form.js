@@ -1,91 +1,45 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setFormData,
+  resetFormData,
+  fetchDataFromAPI,
+} from "../slices/formSlice";
 
 import FormDiv from "../components/Style/FormDiv";
 import Button from "../components/Style/Button";
 
-const apiKEY = process.env.REACT_APP_API_KEY;
-
 const Form = (props) => {
   const navigate = useNavigate();
   const params = useParams();
+  const dispatch = useDispatch();
+  const formData = useSelector((state) => state.form.formData);
+  const searchedData = useSelector((state) => state.form.searchedData);
 
-  // will get current set here for edit
-  const currentSet = useMemo(
-    () => props.posts.find((post) => post.id === parseInt(params.id)),
-    [params.id, props.posts],
-  );
+  const [searchData, setSearchData] = useState("");
 
-  const [formData, setFormData] = useState(
-    props.formType === "new"
-      ? {
-          name: "",
-          item_number: "",
-          theme: "",
-          img_url: "",
-          built: false,
-          wishlist: false,
-          pieces: "",
-        }
-      : {
-          name: currentSet.name,
-          item_number: currentSet.item_number,
-          theme: currentSet.theme,
-          img_url: currentSet.img_url,
-          built: currentSet.built,
-          wishlist: currentSet.wishlist,
-          pieces: currentSet.pieces,
-          id: parseInt(currentSet.id),
-        },
-  );
+  useEffect(() => {
+    if (props.formType === "edit") {
+      const currentSet = props.posts.find(
+        (post) => post.id === parseInt(params.id),
+      );
+      if (currentSet) {
+        dispatch(setFormData(currentSet));
+      }
+    }
+  }, [props.formType, params.id, dispatch, props.posts]);
 
-  // function to handle change and submit
   const handleChange = (e) => {
     const value =
       e.target.type === "checkbox" ? e.target.checked : e.target.value;
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: value,
-    }));
+    dispatch(setFormData({ ...formData, [e.target.name]: value }));
   };
 
   const handleSubmission = (e) => {
     e.preventDefault();
     props.handleSubmit(formData, props.formType);
     navigate("/");
-  };
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-    props.fetchData();
-  };
-
-  // use API to fill new create form
-  const [searchData, setSearchData] = useState("");
-  const [searchedData, setSearchedData] = useState(null);
-
-  const fetchData = async () => {
-    const response = await fetch(
-      `https://rebrickable.com/api/v3/lego/sets/?search=${searchData}&page_size=1&key=${apiKEY}`,
-    );
-    const result = await response.json();
-
-    // need to edit item_nubmer fetched result
-    const itemNumberWithout = result.results[0].set_num.split("-")[0];
-
-    setSearchedData(result);
-
-    //Update Form
-    setFormData((prevData) => ({
-      ...prevData,
-      name: result.results[0].name,
-      item_number: parseInt(itemNumberWithout),
-      theme: result.results[0].theme_id,
-      img_url: result.results[0].set_img_url,
-      built: false,
-      wishlist: false,
-      pieces: result.results[0].num_parts,
-    }));
   };
 
   // Function to handle search input change
@@ -96,7 +50,7 @@ const Form = (props) => {
   // Function to handle search form submission
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    fetchData();
+    dispatch(fetchDataFromAPI(searchData));
   };
 
   return (
