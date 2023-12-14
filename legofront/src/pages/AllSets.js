@@ -62,12 +62,13 @@ const AllSets = (props) => {
       </div>
       <ReactPaginate
         breakLabel="..."
-        nextLabel="next >"
+        nextLabel={<span className="hover:underline">next ↠</span>}
         onPageChange={handlePageClick}
         pageRangeDisplayed={5}
         pageCount={pageCount}
-        previousLabel="< previous"
+        previousLabel={<span className="hover:underline">↞ prev</span>}
         renderOnZeroPageCount={null}
+        className="mb-20 flex justify-center gap-6"
       />
     </div>
   );
