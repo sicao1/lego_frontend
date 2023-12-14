@@ -1,12 +1,17 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-import LegoSet from "../components/LegoSet";
 import Button from "../components/Style/Button";
 import Dropdown from "../components/Dropdown";
+import LegoSet from "../components/LegoSet";
+
+// sourced from https://www.npmjs.com/package/react-paginate
+import ReactPaginate from "react-paginate";
 
 const AllSets = (props) => {
   const [sortType, setSortType] = useState("default");
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 5;
 
   const handleSort = (type) => {
     setSortType(type);
@@ -28,6 +33,14 @@ const AllSets = (props) => {
     handleSort(type);
   };
 
+  const handlePageClick = ({ selected }) => {
+    setCurrentPage(selected);
+  };
+
+  const offset = currentPage * itemsPerPage;
+  const paginatedPosts = sortedPosts.slice(offset, offset + itemsPerPage);
+  const pageCount = Math.ceil(sortedPosts.length / itemsPerPage);
+
   return (
     <div>
       <div className="mx-8 mt-8 flex items-center justify-between">
@@ -43,10 +56,19 @@ const AllSets = (props) => {
       </div>
 
       <div>
-        {sortedPosts.map((post) => (
+        {paginatedPosts.map((post) => (
           <LegoSet post={post} key={post.id} deleteSet={props.deleteSet} />
         ))}
       </div>
+      <ReactPaginate
+        breakLabel="..."
+        nextLabel="next >"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={5}
+        pageCount={pageCount}
+        previousLabel="< previous"
+        renderOnZeroPageCount={null}
+      />
     </div>
   );
 };
