@@ -102,18 +102,31 @@ const Form = (props) => {
   return (
     <div className="m-10 border-2 border-dotted p-5">
       <div>
-        <form onSubmit={handleSearchSubmit}>
-          <h3>Search:</h3>
+        <h1 className="mb-8 text-4xl font-semibold text-stormsinparis">
+          Add to Collection
+        </h1>
+      </div>
+
+      <form onSubmit={handleSearchSubmit} className="mb-8">
+        <FormDiv>
+          <h3 className="mr-2 justify-end text-right font-semibold">
+            Search by Name <br /> or Set Number:
+          </h3>
           <input
             type="text"
             placeholder="Search by Name or Set Number"
             value={searchData}
             onChange={handleSearchChange}
-            className="finput"
+            className="finput mr-2"
           />
-          <button type="submit">submit</button>
-        </form>
-      </div>
+          <Button type="submit">submit</Button>
+        </FormDiv>
+      </form>
+
+      <p className="mb-8 text-center font-semibold">
+        Or enter details manually below:
+      </p>
+
       <form onSubmit={handleSubmission}>
         <FormDiv>
           <h3 className="font-semibold">Name: </h3>
