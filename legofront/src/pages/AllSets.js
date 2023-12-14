@@ -31,7 +31,7 @@ const AllSets = (props) => {
   return (
     <div>
       <div className="mx-8 mt-8 flex items-center justify-between">
-        <h1 className="text-stormsinparis semi-bold text-4xl">
+        <h1 className="semi-bold text-4xl text-stormsinparis">
           Your Collection
         </h1>
         <div>
